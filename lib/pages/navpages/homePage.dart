@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/Widgets/appLargeText.dart';
+import 'package:travel_app/Widgets/appText.dart';
 import 'package:travel_app/misc/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -68,14 +69,51 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ]),
             ),
           ),
+          //TabBarView
           Container(
+            padding: const EdgeInsets.only(left: 20.0),
             height: 300,
             width: double.maxFinite,
             child: TabBarView(controller: _tabController, children: [
-              Text("All Treks"),
+              ListView.builder(
+                itemCount: 3,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    margin: const EdgeInsets.only(right: 10.0, top: 10.0),
+                    width: 200,
+                    height: 300,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: Colors.white,
+                      image: DecorationImage(
+                        image: AssetImage("img/mountain.jpeg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
+              ),
               Text("All Adventure Sports"),
               Text("All VT"),
             ]),
+          ),
+          const SizedBox(height: 30),
+          Container(
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppLargeText(
+                  text: "Explore more",
+                  size: 22,
+                ),
+                AppText(
+                  text: "See all",
+                  color: AppColors.textColor1,
+                )
+              ],
+            ),
           )
         ],
       ),
