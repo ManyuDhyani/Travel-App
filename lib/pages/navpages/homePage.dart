@@ -12,6 +12,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  var images = {
+    "balloning.png": "Balloning",
+    "hiking.png": "Hiking",
+    "kayaking.png": "Kayaking",
+    "snorkling.png": "Snorkling",
+  };
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -21,7 +28,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         children: [
           // menu text
           Container(
-            padding: const EdgeInsets.only(top: 50.0, left: 20.0),
+            padding: const EdgeInsets.only(top: 40.0, left: 20.0),
             child: Row(
               children: [
                 Icon(
@@ -42,13 +49,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ],
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 30),
           //Discover text
           Container(
             margin: const EdgeInsets.only(left: 20.0),
             child: AppLargeText(text: "Discover"),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           //TabBar: Treks, Village Tours and Adventure Sports
           Container(
             child: Align(
@@ -98,7 +105,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Text("All VT"),
             ]),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
+          //Explore more
           Container(
             margin: const EdgeInsets.only(left: 20.0, right: 20.0),
             child: Row(
@@ -111,9 +119,45 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 AppText(
                   text: "See all",
                   color: AppColors.textColor1,
-                )
+                ),
               ],
             ),
+          ),
+          const SizedBox(height: 10),
+          Container(
+            height: 120,
+            width: double.maxFinite,
+            margin: const EdgeInsets.only(left: 20),
+            child: ListView.builder(
+                itemCount: 4,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (_, index) {
+                  return Container(
+                    margin: const EdgeInsets.only(right: 30.0),
+                    child: Column(children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "img/" + images.keys.elementAt(index)),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10.0),
+                      Container(
+                        child: AppText(
+                          text: images.values.elementAt(index),
+                          color: AppColors.textColor2,
+                        ),
+                      )
+                    ]),
+                  );
+                }),
           )
         ],
       ),
