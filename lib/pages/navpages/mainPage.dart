@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/pages/navpages/accountPage.dart';
-import 'package:travel_app/pages/navpages/homePage.dart';
+import 'package:travel_app/pages/homePage.dart';
 import 'package:travel_app/pages/navpages/searchPage.dart';
 import 'package:travel_app/pages/navpages/trendPage.dart';
 
