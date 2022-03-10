@@ -11,6 +11,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  int ratings = 4;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +96,9 @@ class _DetailPageState extends State<DetailPage> {
                             children: List.generate(5, (index) {
                               return Icon(
                                 Icons.star,
-                                color: AppColors.starColor,
+                                color: index < ratings
+                                    ? AppColors.starColor
+                                    : AppColors.textColor2,
                               );
                             }),
                           ),
@@ -105,7 +108,8 @@ class _DetailPageState extends State<DetailPage> {
                             color: AppColors.textColor2,
                           ),
                         ],
-                      )
+                      ),
+                      const SizedBox(height: 25.0),
                     ],
                   ),
                 ),
