@@ -29,7 +29,7 @@ class _DetailPageState extends State<DetailPage> {
               right: 0,
               child: Container(
                 width: double.maxFinite,
-                height: 350,
+                height: 300,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("img/mountain.jpeg"),
@@ -51,7 +51,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
             Positioned(
-              top: 310,
+              top: 260,
               child: Container(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
                 width: MediaQuery.of(context).size.width,
