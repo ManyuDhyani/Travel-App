@@ -5,6 +5,7 @@ import 'package:travel_app/cubit/AppCubitStates.dart';
 import 'package:travel_app/pages/detailPage.dart';
 import 'package:travel_app/pages/navpages/mainPage.dart';
 import 'package:travel_app/pages/welcomePage.dart';
+import 'package:travel_app/services/DataServices.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocProvider<AppCubits>(
-        create: (context) => AppCubits(),
+        create: (context) => AppCubits(
+          data: DataServices(),
+        ),
         child: AppCubitLogics(),
       ),
     );
