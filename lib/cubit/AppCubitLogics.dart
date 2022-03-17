@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_app/cubit/AppCubitStates.dart';
 import 'package:travel_app/cubit/AppCubites.dart';
-import 'package:travel_app/pages/homePage.dart';
+import 'package:travel_app/pages/detailPage.dart';
+import 'package:travel_app/pages/navpages/mainPage.dart';
 import 'package:travel_app/pages/welcomePage.dart';
 
 class AppCubitLogics extends StatefulWidget {
@@ -18,6 +19,9 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
     return Scaffold(
       body: BlocBuilder<AppCubits, CubitStates>(
         builder: (context, state) {
+          if (state is DetailState) {
+            return DetailPage();
+          }
           if (state is WelcomeState) {
             return WelcomePage();
           }
@@ -27,7 +31,7 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
             );
           }
           if (state is LoadedState) {
-            return HomePage();
+            return MainPage();
           } else {
             return Container();
           }

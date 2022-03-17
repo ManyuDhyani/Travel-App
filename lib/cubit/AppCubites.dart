@@ -28,3 +28,11 @@ class LoadedState extends CubitStates {
   // TODO: implement props
   List<Object> get props => [activities];
 }
+
+class DetailState extends CubitStates {
+  DetailState(this.activity);
+  final ActivityModel activity;
+  @override
+  // TODO: implement props
+  List<Object> get props => [activity];
+}

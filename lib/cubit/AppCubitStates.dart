@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:travel_app/cubit/AppCubites.dart';
+import 'package:travel_app/models/ActivityModel.dart';
 import 'package:travel_app/services/DataServices.dart';
 
 class AppCubits extends Cubit<CubitStates> {
@@ -18,5 +19,13 @@ class AppCubits extends Cubit<CubitStates> {
     } catch (e) {
       print(e);
     }
+  }
+
+  detailPage(ActivityModel data) {
+    emit(DetailState(data));
+  }
+
+  goHome() {
+    emit(LoadedState(activities));
   }
 }
