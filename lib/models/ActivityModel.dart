@@ -20,10 +20,10 @@ class ActivityModel {
   factory ActivityModel.fromJson(Map<String, dynamic> json) {
     return ActivityModel(
       name: json["name"],
-      thumbnail: json["thumbnail"],
+      thumbnail: json["img"],
       price: json["price"],
       people: json["people"],
-      ratings: json["ratings"],
+      ratings: json["stars"],
       description: json["description"],
       location: json["location"],
     );
