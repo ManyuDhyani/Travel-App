@@ -15,7 +15,14 @@ class DetailPage extends StatefulWidget {
   State<DetailPage> createState() => _DetailPageState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
+  var images = {
+    "altitude.png": "Altitude",
+    "calender.png": "Duration",
+    "difficulty.jpg": "Difficulty",
+    "distance.jpg": "Distance",
+  };
+
   int ratings = 4;
   int selectedButtonIndex = -1;
 
@@ -34,7 +41,7 @@ class _DetailPageState extends State<DetailPage> {
                 right: 0,
                 child: Container(
                   width: double.maxFinite,
-                  height: 300,
+                  height: 340,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
@@ -60,7 +67,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
               Positioned(
-                top: 260,
+                top: 320,
                 child: Container(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
                   width: MediaQuery.of(context).size.width,
@@ -126,46 +133,42 @@ class _DetailPageState extends State<DetailPage> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 25.0),
-                      AppLargeText(
-                        text: "People",
-                        color: Colors.black.withOpacity(0.8),
-                        size: 20.0,
-                      ),
-                      const SizedBox(height: 5.0),
-                      AppText(
-                        text: "Number of people in your group",
-                        color: AppColors.mainTextColor,
+                      const SizedBox(height: 20.0),
+                      Container(
+                        height: 90,
+                        width: double.maxFinite,
+                        child: ListView.builder(
+                            itemCount: 4,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (_, index) {
+                              return Container(
+                                margin: const EdgeInsets.only(right: 30.0),
+                                child: Column(children: [
+                                  Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      color: Colors.white,
+                                      image: DecorationImage(
+                                        image: AssetImage("img/" +
+                                            images.keys.elementAt(index)),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10.0),
+                                  Container(
+                                    child: AppText(
+                                      text: images.values.elementAt(index),
+                                      color: AppColors.textColor2,
+                                    ),
+                                  )
+                                ]),
+                              );
+                            }),
                       ),
                       const SizedBox(height: 10.0),
-                      Wrap(
-                        children: List.generate(5, (index) {
-                          return InkWell(
-                            onTap: () {
-                              setState(() {
-                                selectedButtonIndex = index;
-                              });
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(right: 10),
-                              child: AppButton(
-                                color: selectedButtonIndex == index
-                                    ? Colors.white
-                                    : Colors.black,
-                                backgroundColor: selectedButtonIndex == index
-                                    ? Colors.black
-                                    : AppColors.buttonBackground,
-                                size: 50.0,
-                                borderColor: selectedButtonIndex == index
-                                    ? Colors.black
-                                    : AppColors.buttonBackground,
-                                text: (index + 1).toString(),
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                      const SizedBox(height: 20.0),
                       AppLargeText(
                         text: "Description",
                         color: Colors.black.withOpacity(0.8),
