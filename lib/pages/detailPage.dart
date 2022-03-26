@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:readmore/readmore.dart';
 import 'package:travel_app/Widgets/appButton.dart';
 import 'package:travel_app/Widgets/appLargeText.dart';
 import 'package:travel_app/Widgets/appText.dart';
@@ -175,9 +176,29 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                         size: 20.0,
                       ),
                       const SizedBox(height: 10.0),
-                      AppText(
-                        text: detail.activity.description,
-                        color: AppColors.mainTextColor,
+                      SingleChildScrollView(
+                        child: Container(
+                          child: ReadMoreText(
+                            detail.activity.description,
+                            trimLines: 2,
+                            textAlign: TextAlign.justify,
+                            trimMode: TrimMode.Line,
+                            trimCollapsedText: " Show More ",
+                            trimExpandedText: " Show Less ",
+                            lessStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.mainTextColor,
+                            ),
+                            moreStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.mainTextColor,
+                            ),
+                            style: TextStyle(
+                              fontSize: 12.0,
+                              height: 2.0,
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),

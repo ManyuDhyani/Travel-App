@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc:
   equatable:
   http: ^0.13.4
+  readmore: ^2.1.0
 
 dev_dependencies:
   flutter_test:

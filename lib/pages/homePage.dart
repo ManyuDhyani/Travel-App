@@ -94,6 +94,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       itemCount: data.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) {
+                        // if (data[index].category == 1) {}
                         return GestureDetector(
                           onTap: () {
                             BlocProvider.of<AppCubits>(context)
